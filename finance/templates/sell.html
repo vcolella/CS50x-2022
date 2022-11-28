@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <select autofocus class="form-control mb-2" id="symbol" name="symbol" placeholder="Symbol">
+                        {% for stock in stocks %}
+                            {% if symbol == stock.symbol %}
+                                <option selected>{{stock.symbol}}</option>
+                            {% else %}
+                                <option>{{stock.symbol}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <input autocomplete="off" class="form-control" id="shares" name="shares" placeholder="Shares" type="number" value=1">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">Sell</button>
+                </div>
+            </div>
+        </form>
+{% endblock %}

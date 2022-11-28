@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="confirmation" placeholder="Password Confirmation" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <h3 class="text-center mt-4 mb-4">Password must be:</h3>
+    <div class="d-flex justify-content-center">
+        <ul class="list-group-flush">
+            <li class="list-group-item">At least 8 characters long</li>
+            <li class="list-group-item">At least one uppercase English letter</li>
+            <li class="list-group-item">At least one lowercase English letter</li>
+            <li class="list-group-item">At least one digit</li>
+            <li class="list-group-item">At least one special character</li>
+        </ul>
+    </div>
+{% endblock %}

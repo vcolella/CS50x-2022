@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+            <!-- TODO: Add multiple choice question here -->
+            <h3>What is the least populated country in Africa ?</h3>
+            <p id="tip1"></p>
+
+            <button id="answer1">Saint Helena</button>
+            <button id="answer2">São Tomé e Príncipe</button>
+            <button id="answer3">Cabo Verde</button>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <!-- TODO: Add free response question here -->
+            <h3>How many countries are in the world today ?</h3>
+            <p id="tip2"></p>
+            <form id="free_answer_form">
+                <input autofocus id="free_answer" placeholder="Your answer..." type="text">
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    // TODO: Add code to check answers to questions
+    // Question 1
+
+    let correct_answer1 = 'Saint Helena';
+    let answers = [];
+    for (let i = 1; i <= 3; i++) {
+        answers.push(document.querySelector('#answer' + i));
+    }
+    let tip = document.querySelector('#tip1');
+
+    answers.forEach(function (a) {
+        a.addEventListener('click', function () {
+            answers.forEach(function (b) {
+                b.style.backgroundColor = "";
+            });
+
+            if (a.innerText == correct_answer1) {
+                a.style.backgroundColor = 'green';
+                tip.textContent = 'Correct!';
+                tip.style.color = 'green';
+            }
+            else {
+                a.style.backgroundColor = 'red';
+                tip.textContent = 'Incorrect';
+                tip.style.color = 'red';
+
+            }
+        })
+    });
+    // Question 2
+    let tip2 = document.querySelector('#tip2');
+    let correct_answer2 = "195";
+    document.querySelector('#free_answer_form').addEventListener('submit', function (e) {
+        let free_answer = document.querySelector('#free_answer').value;
+
+        if (free_answer == correct_answer2) {
+            tip2.textContent = 'Correct!';
+            tip2.style.color = 'green';
+        }
+        else {
+            tip2.textContent = 'Incorrect';
+            tip2.style.color = 'red';
+        }
+        document.querySelector('#free_answer').style.background = tip2.style.color;
+        e.preventDefault(); // Stop default behaviour of the form
+    });
+
+</script>
+
+</html>

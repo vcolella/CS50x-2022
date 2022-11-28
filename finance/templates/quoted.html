@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quotation
+{% endblock %}
+
+{% block main %}
+    <h3>{{name}} ({{symbol}}) is trading at {{price | usd}}</h3>
+{% endblock %}

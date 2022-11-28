@@ -1,0 +1,25 @@
+/* class for centering div */
+.home-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+/* p custom style classes */
+
+p.heavyFont {
+    font-weight: bold;
+}
+
+p.bigFont {
+    font-size: 12px;
+}
+
+p.funnyFont {
+    font-family: "Roboto Slab", Helvetica, sans-serif;
+}
+
+p.colorFont {
+    color: red;
+}

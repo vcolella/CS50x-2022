@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+{% if orders is defined %}
+<div class="container-md">
+    <table class="table table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Transaction</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+            <th scope="row">{{order.type}}</th>
+            <td>{{order.symbol}}</td>
+            <td>{{order.price | usd}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{order.date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

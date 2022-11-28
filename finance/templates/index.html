@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block main %}
+<div class="container-md">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Cash</th>
+                    <th scope="col">Net Worth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{cash | usd}}</td>
+                    <td>{{networth | usd}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% if stocks is defined %}
+    <div class="container-md">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Action</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in stocks %}
+                    <tr>
+                        <td>
+                            <form action="/" method="post">
+                                <input type="hidden" name="symbol" value={{stock.symbol}}>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="buy and sell buttons">
+                                    <button name="action" type="submit" value="buy" class="btn btn-outline-secondary">Buy</button>
+                                    <button name="action" type="submit" value="sell" class="btn btn-outline-secondary">Sell</button>
+                                </div>
+                            </form>
+                        </td>
+                        <th scope="row">{{stock.symbol}}</th>
+                        <td>{{stock.quantity}}</td>
+                        <td>{{stock.price | usd}}</td>
+                        <td>{{stock.total | usd}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
